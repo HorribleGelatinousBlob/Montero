@@ -1,0 +1,41 @@
+#!/bin/bash
+
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+datadir=${dir}/db
+bindir=${dir}/builder/build/release/bin
+
+# Test 1 seed
+# 1DjwygGmv2BRTiJtTuvXTFRW7466hPqCXNkdUrQrEPEtRqSGgXC7KhBCVdc7Ky8SNYSSA43tALafCNg6gQ6dD7vmM6cXKH7
+# corrode swept cocoa flippant nodes joking dedicated unbending loincloth hitched pitched cavernous each elite badge went hurried duration daft fully verification nutshell easy eight each
+
+
+# Test 2 seed
+# 1FbbfE3xYpDGMSfq99DPBcNqX5anBwoC8FQNvdMDMEHLBb4usqgAXc6QXnnA5fpi1qZMKPkJXPvWHcH8WQqqfoqH3938zLu
+# loaded tsunami jargon cabin kernels sedan oilfield wrong solved zones afraid rims jackets july threaten tedious stockpile pavements width gauze jazz peeled wolf zeal wrong
+
+function wallet1()
+{
+	rm -f ${dir}/t1.cache
+	${bindir}/montero-wallet-cli --stagenet --daemon-address 127.0.0.1:28081 --wallet-file ${dir}/t1 --password ""
+}
+
+function wallet2()
+{
+	rm -f ${dir}/t2.cache
+	${bindir}/montero-wallet-cli --stagenet --daemon-address 127.0.0.1:38081 --wallet-file ${dir}/t2 --password ""
+}
+
+function n1()
+{
+	${bindir}/monterod --stagenet --data-dir ${datadir}/n1 --p2p-bind-port 28080 --rpc-bind-port 28081 --zmq-rpc-bind-port 28082 \
+	--add-exclusive-node 127.0.0.1:58080 --add-exclusive-node 127.0.0.1:48080 --add-exclusive-node 127.0.0.1:38080
+}
+
+function n2()
+{
+	${bindir}/monterod --stagenet --data-dir ${datadir}/n2 --p2p-bind-port 38080 --rpc-bind-port 38081 --zmq-rpc-bind-port 38082 --rpc-restricted-bind-port 38083 \
+	--add-exclusive-node 127.0.0.1:58080 --add-exclusive-node 127.0.0.1:48080 --add-exclusive-node 127.0.0.1:28080
+}
+
+$1

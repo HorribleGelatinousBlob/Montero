@@ -1,0 +1,9 @@
+.vscode/ipch
+build
+builder
+db
+*.zip
+hw.*
+*.keys
+*.cache
+*.address.txt
