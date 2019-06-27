@@ -42,7 +42,6 @@
 #include "cryptonote_config.h"
 #include "crypto/crypto.h"
 #include "crypto/hash.h"
-#include "cryptonote_core/blockchain.h"
 #include "ringct/rctSigs.h"
 
 using namespace epee;
@@ -1052,7 +1051,7 @@ namespace cryptonote
     return p;
   }
   //---------------------------------------------------------------
-  bool get_block_longhash(const block& b, crypto::hash& res, uint64_t height, const cryptonote::Blockchain* bc)
+  bool get_block_longhash(const block& b, crypto::hash& res)
   {
     switch (b.major_version)
     {
@@ -1092,10 +1091,10 @@ namespace cryptonote
     return res;
   }
   //---------------------------------------------------------------
-  crypto::hash get_block_longhash(const block& b, uint64_t height, const cryptonote::Blockchain* bc)
+  crypto::hash get_block_longhash(const block& b)
   {
     crypto::hash p = null_hash;
-    get_block_longhash(b, p, height, bc);
+    get_block_longhash(b, p);
     return p;
   }
   //---------------------------------------------------------------

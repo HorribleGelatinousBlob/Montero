@@ -5,7 +5,7 @@
             "name": "Wallet",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/builder/build/dev/debug/bin/montero-wallet-cli",
+            "program": "${workspaceFolder}/builder/build/debug/bin/montero-wallet-cli",
             "args": [
                 "--testnet",
             ],
@@ -24,12 +24,12 @@
             ]
         },
         {
-            "name": "Testnet",
+            "name": "Mainnet",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/builder/build/dev/debug/bin/monterod",
+            "program": "${workspaceFolder}/builder/build/debug/bin/monterod",
             "args": [
-                "--testnet", "--create-genesis-tx"
+                "--start-mining", "1FmkZbZ8zPZSDM3ANynryDQ1VysVCGqtjR9fSwozK5hjB2R9kbapeDWabHvgQayCuWir3yCVyjU7WLcUy36y5LTkKnGJxDT"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
